@@ -3,6 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
+	<display-name>webappmaven</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -11,8 +12,43 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
+		<description>
+		</description>
+		<display-name>ModifyPost</display-name>
+		<servlet-name>ModifyPost</servlet-name>
+		<servlet-class>web.servlets.ModifyPost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ModifyPost</servlet-name>
+		<url-pattern>/modifyPost</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AddPost</display-name>
+		<servlet-name>AddPost</servlet-name>
+		<servlet-class>web.servlets.AddPost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddPost</servlet-name>
+		<url-pattern>/addPost</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AllWriters</display-name>
+		<servlet-name>AllWriters</servlet-name>
+		<servlet-class>web.servlets.AllWriters</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AllWriters</servlet-name>
+		<url-pattern>/allWriters</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Index</display-name>
 		<servlet-name>Index</servlet-name>
 		<servlet-class>web.servlets.Index</servlet-class>
 	</servlet>
@@ -20,4 +56,60 @@
 		<servlet-name>Index</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AllPosts</display-name>
+		<servlet-name>AllPosts</servlet-name>
+		<servlet-class>web.servlets.AllPosts</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AllPosts</servlet-name>
+		<url-pattern>/allPosts</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Post</display-name>
+		<servlet-name>Post</servlet-name>
+		<servlet-class>web.servlets.Post</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DeletePost</display-name>
+		<servlet-name>DeletePost</servlet-name>
+		<servlet-class>web.servlets.DeletePost</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Login</display-name>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>web.servlets.Login</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>register</display-name>
+		<servlet-name>register</servlet-name>
+		<servlet-class>web.servlets.register</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Post</servlet-name>
+		<url-pattern>/post</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeletePost</servlet-name>
+		<url-pattern>/deletePost</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>register</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

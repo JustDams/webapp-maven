@@ -9,7 +9,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<title>Accueil</title>
+<title>Modification de l'article n°${post[0]}</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark position-fixed"
@@ -23,8 +23,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExample04">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="/webappmaven">Accueil</a></li>
+				<li class="nav-item"><a class="nav-link" href="/webappmaven">Accueil</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="/webappmaven/allPosts">Tous les articles</a></li>
 				<li class="nav-item"><a class="nav-link"
@@ -34,37 +33,48 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="container" style="padding-top: 56px;">
-		<div class="row">
-			<c:forEach var="latestPosts" items="${latestPosts}">
-				<div class="col-lg-8 mt-4">
-					<a href="/webappmaven/deletePost?post=${latestPosts[0]}" class="ml-2"><i
-						class="fas fa-trash-alt"></i></a> <a
-						href="/webappmaven/modifyPost?post=${latestPosts[0]}" class="ml-2"><i
-						class="fas fa-pencil-alt"></i></a>
-					<!-- Title -->
-					<h1>${latestPosts[2]}</h1>
-
-					<!-- Author -->
-					<p class="lead">
-						par <a href="/webappmaven/post?user=${latestPosts[1]}">${latestPosts[1]}</a>
-					</p>
-
-					<hr>
-
-					<!-- Date/Time -->
-					<p>Publié le ${latestPosts[5]}</p>
-
-					<hr>
-					<!-- Post Content -->
-					<p class="lead">${latestPosts[4]}</p>
-					<hr>
+	<div class="container" style="padding-top: 66px;">
+		<c:if test="${not empty post}">
+			<form method="post">
+				<c:if test="${error}">
+					<div class="alert alert-danger">
+						<strong>Erreur !</strong> Merci de remplir les champs
+						obligatoires.
+					</div>
+				</c:if>
+				<c:if test="${success}">
+					<div class="alert alert-success">Votre article a bien été
+						modifié.</div>
+				</c:if>
+				<c:if test="${empty connected}">
+					<div class="form-group">
+						<label for="Auteur">Auteur</label> <input type="text"
+							class="form-control" name="Auteur" placeholder="Auteur"
+							value="${post[1]}" required>
+					</div>
+				</c:if>
+				<div class="form-group">
+					<label for="Titre">Titre</label> <input type="text"
+						class="form-control" name="Titre" placeholder="Titre"
+						value="${post[2]}" required>
 				</div>
-			</c:forEach>
-			<c:if test="${empty latestPosts}">
-				<h1>Aucun article n'a été publié.</h1>
-			</c:if>
-		</div>
+				<div class="form-group">
+					<label for="Description">Description</label> <input type="text"
+						class="form-control" name="Description" placeholder="Description"
+						value="${post[3]}" required>
+				</div>
+				<div class="form-group">
+					<label for="Texte">Texte</label>
+					<textarea class="form-control" name="Texte"
+						aria-label="With textarea" placeholder="Texte"
+						required>${post[4]}</textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Envoyer</button>
+			</form>
+		</c:if>
+		<c:if test="${empty post}">
+			<h1>L'article selectionné n'est pas valide</h1>
+		</c:if>
 	</div>
 </body>
 <script src="https://kit.fontawesome.com/016ccc365f.js"

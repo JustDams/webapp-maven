@@ -9,7 +9,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<title>Accueil</title>
+<title>Tous les articles</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark position-fixed"
@@ -23,46 +23,40 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExample04">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="/webappmaven">Accueil</a></li>
+				<li class="nav-item"><a class="nav-link" href="/webappmaven">Accueil</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="/webappmaven/allPosts">Tous les articles</a></li>
-				<li class="nav-item"><a class="nav-link"
+				<li class="nav-item active"><a class="nav-link"
 					href="/webappmaven/allWriters">Tous les auteurs</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="/webappmaven/addPost">Ajouter un article</a></li>
 			</ul>
 		</div>
 	</nav>
-	<div class="container" style="padding-top: 56px;">
-		<div class="row">
-			<c:forEach var="latestPosts" items="${latestPosts}">
-				<div class="col-lg-8 mt-4">
-					<a href="/webappmaven/deletePost?post=${latestPosts[0]}" class="ml-2"><i
-						class="fas fa-trash-alt"></i></a> <a
-						href="/webappmaven/modifyPost?post=${latestPosts[0]}" class="ml-2"><i
-						class="fas fa-pencil-alt"></i></a>
-					<!-- Title -->
-					<h1>${latestPosts[2]}</h1>
-
-					<!-- Author -->
-					<p class="lead">
-						par <a href="/webappmaven/post?user=${latestPosts[1]}">${latestPosts[1]}</a>
-					</p>
-
-					<hr>
-
-					<!-- Date/Time -->
-					<p>Publié le ${latestPosts[5]}</p>
-
-					<hr>
-					<!-- Post Content -->
-					<p class="lead">${latestPosts[4]}</p>
-					<hr>
-				</div>
-			</c:forEach>
-			<c:if test="${empty latestPosts}">
-				<h1>Aucun article n'a été publié.</h1>
+	<div class="container" style="padding-top: 66px;">
+		<div class="row text-center">
+			<c:if test="${not empty allWriters}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Auteurs</th>
+							<th scope="col">Nombres d'article</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="i" begin="0" end="${size}">
+							<tr>
+								<th scope="row">-</th>
+								<td>${allWriters[i]}</td>
+								<td><a href="/webappmaven/post?user=${allWriters[i]}">${postNumber[i]}</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+			<c:if test="${empty allWriters}">
+			<h1>Aucun article n'a été écrit pour le moment, par conséquent il n'éxiste aucun auteur.</h1>
 			</c:if>
 		</div>
 	</div>
