@@ -43,21 +43,32 @@ public class ModifyPost extends HttpServlet {
 
 		int postId = 0;
 
+		Object co = request.getSession().getAttribute("connected");
+		request.setAttribute("connected", co);
+
 		if (request.getParameter("post") != null) {
 			postId = Integer.parseInt(request.getParameter("post"));
 		}
 
-		if (request.getParameter("Auteur") != "" && request.getParameter("Titre") != ""
-				&& request.getParameter("Description") != "" && request.getParameter("Texte") != "") {
-			daoPost.updatePost(new Post(postId, request.getParameter("Auteur"), request.getParameter("Titre"),
-					request.getParameter("Description"), request.getParameter("Texte"), now));
+		if (request.getParameter("Titre") != null && request.getParameter("Description") != null
+				&& request.getParameter("Texte") != null) {
+			if (request.getParameter("Auteur") == null && co != null) {
+				daoPost.updatePost(new Post(postId, request.getSession().getAttribute("username").toString(),
+						request.getParameter("Titre"), request.getParameter("Description"),
+						request.getParameter("Texte"), now));
 
-			request.setAttribute("success", true);
+				request.setAttribute("success", true);
+			} else if (request.getParameter("Auteur") != null) {
+				daoPost.updatePost(new Post(postId, request.getParameter("Auteur"), request.getParameter("Titre"),
+						request.getParameter("Description"), request.getParameter("Texte"), now));
+
+				request.setAttribute("success", true);
+			} else {
+				request.setAttribute("error", true);
+			}
 		} else {
 			request.setAttribute("error", true);
 		}
-
 		doGet(request, response);
 	}
-
 }
