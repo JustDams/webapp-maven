@@ -46,7 +46,7 @@
 		</div>
 	</nav>
 	<div class="container" style="padding-top: 66px;">
-		<div class="row">
+		<div class="row text-center">
 			<c:if test="${browser}">
 				<h6 class="alert alert-warning">
 					<strong>Warning !</strong> Tout le Css n'est pas fonctionnel sur le

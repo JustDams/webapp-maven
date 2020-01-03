@@ -1,0 +1,16 @@
+web\servlets\DeletePost.class
+web\project\dao\DAOFactory.class
+web\servlets\AllWriters.class
+web\project\dao\DAOUser.class
+web\project\dao\model\Post.class
+web\servlets\Disconnect.class
+web\servlets\Index.class
+web\servlets\Login.class
+web\servlets\AllPosts.class
+web\project\dao\DAOPost.class
+web\servlets\Register.class
+web\servlets\AddPost.class
+web\servlets\ModifyPost.class
+web\project\dao\MySQLManager.class
+web\servlets\Post.class
+web\project\dao\model\User.class
