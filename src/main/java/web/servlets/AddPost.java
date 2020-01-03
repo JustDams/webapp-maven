@@ -34,14 +34,25 @@ public class AddPost extends HttpServlet {
 		if (request.getParameter("Titre") != null && request.getParameter("Description") != null
 				&& request.getParameter("Texte") != null) {
 			if (request.getParameter("Auteur") == null && co != null) {
-				daoPost.addPost(new Post(0, request.getSession().getAttribute("username").toString(),
-						request.getParameter("Titre"), request.getParameter("Description"),
-						request.getParameter("Texte"), now));
-				request.setAttribute("success", true);
+				if (request.getParameter("Titre").length() > 40) {
+					request.setAttribute("titlelen", true);
+				} else {
+					daoPost.addPost(new Post(0, request.getSession().getAttribute("username").toString(),
+							request.getParameter("Titre"), request.getParameter("Description"),
+							request.getParameter("Texte"), now));
+					request.setAttribute("success", true);
+				}
 			} else if (request.getParameter("Auteur") != null) {
-				daoPost.addPost(new Post(0, request.getParameter("Auteur"), request.getParameter("Titre"),
-						request.getParameter("Description"), request.getParameter("Texte"), now));
-				request.setAttribute("success", true);
+				if (request.getParameter("Auteur").length() > 30) {
+					request.setAttribute("authorlen", true);
+				} else if (request.getParameter("Titre").length() > 40) {
+					request.setAttribute("titlelen", true);
+				} else {
+					daoPost.addPost(new Post(0, request.getParameter("Auteur"), request.getParameter("Titre"),
+							request.getParameter("Description"), request.getParameter("Texte"), now));
+
+					request.setAttribute("success", true);
+				}
 			} else {
 				request.setAttribute("error", true);
 			}

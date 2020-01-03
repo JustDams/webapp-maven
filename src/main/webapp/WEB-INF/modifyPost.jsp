@@ -53,6 +53,18 @@
 						obligatoires.
 					</div>
 				</c:if>
+				<c:if test="${titlelen}">
+					<div class="alert alert-danger">
+						<strong>Erreur !</strong> Le titre ne peut pas dépasser
+						40 caractères.
+					</div>
+				</c:if>
+				<c:if test="${authorlen}">
+					<div class="alert alert-danger">
+						<strong>Erreur !</strong> Le nom de l'auteur ne peut pas dépasser
+						30 caractères.
+					</div>
+				</c:if>
 				<c:if test="${success}">
 					<div class="alert alert-success">Votre article a bien été
 						modifié.</div>

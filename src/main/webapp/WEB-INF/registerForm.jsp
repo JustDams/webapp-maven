@@ -45,9 +45,9 @@
 		</div>
 	</nav>
 	<div class="container" style="padding-top: 66px;">
-	<c:if test="${connected}">
-		<c:redirect url="/"></c:redirect>
-	</c:if>
+		<c:if test="${connected}">
+			<c:redirect url="/"></c:redirect>
+		</c:if>
 		<form method="post">
 			<c:if test="${error}">
 				<div class="alert alert-danger">
@@ -62,6 +62,12 @@
 			<c:if test="${success == false}">
 				<div class="alert alert-danger">
 					<strong>Erreur !</strong> Cet username est déjà utilisé.
+				</div>
+			</c:if>
+			<c:if test="${authorlen}">
+				<div class="alert alert-danger">
+					<strong>Erreur !</strong> L'username ne peut pas dépasser
+					30 caractères.
 				</div>
 			</c:if>
 			<c:if test="${success}">

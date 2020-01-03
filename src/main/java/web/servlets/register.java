@@ -26,13 +26,14 @@ public class Register extends HttpServlet {
 		DAOFactory factory = new DAOFactory();
 		DAOUser daoUser = factory.getDaoUser();
 
-		if (request.getParameter("Usename") != "" && request.getParameter("Password") != ""
-				&& request.getParameter("PasswordRep") != "") {
-			if (request.getParameter("Password").equals(request.getParameter("PasswordRep"))) {
+		if (request.getParameter("Username") != null && request.getParameter("Password") != null
+				&& request.getParameter("PasswordRep") != null) {
+			if (request.getParameter("Username").length() > 20) {
+				request.setAttribute("authorlen", true);
+			} else if (request.getParameter("Password").equals(request.getParameter("PasswordRep"))) {
 				try {
-					boolean success = daoUser
-							.addUser(new User(0, request.getParameter("Username"), request.getParameter("Password")));
-					request.setAttribute("success", success);
+					request.setAttribute("success", daoUser
+							.addUser(new User(0, request.getParameter("Username"), request.getParameter("Password"))));
 				} catch (NoSuchAlgorithmException e) {
 					e.printStackTrace();
 				}

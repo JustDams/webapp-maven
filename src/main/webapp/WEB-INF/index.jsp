@@ -45,8 +45,15 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="container" style="padding-top: 56px;">
+	<div class="container" style="padding-top: 66px;">
 		<div class="row">
+			<c:if test="${browser}">
+				<h6 class="alert alert-warning">
+					<strong>Warning !</strong> Tout le Css n'est pas fonctionnel sur le
+					browser par défaut d'éclipse. Il est conseillé d'utiliser Chrome ou
+					Firefox
+				</h6>
+			</c:if>
 			<c:forEach var="latestPosts" items="${latestPosts}">
 				<div class="col-lg-8 mt-4">
 					<a href="/webappmaven/deletePost?post=${latestPosts[0]}"
