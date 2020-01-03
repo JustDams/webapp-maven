@@ -13,7 +13,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark position-fixed"
-		style="width: -moz-available; width: -webkit-fill-available; z-index: 100;">
+		style="width: -moz-available; width: -webkit-fill-available; z-index: 100; width: 100%;">
 		<a class="navbar-brand" href="/webappmaven">Blog</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarsExample04" aria-controls="navbarsExample04"
@@ -31,6 +31,17 @@
 					href="/webappmaven/allWriters">Tous les auteurs</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="/webappmaven/addPost">Ajouter un article</a></li>
+				<c:if test="${empty connected}">
+					<li class="nav-item"><a class="nav-link"
+						href="/webappmaven/login">Connexion</a></li>
+
+					<li class="nav-item"><a class="nav-link"
+						href="/webappmaven/register">Inscription</a></li>
+				</c:if>
+				<c:if test="${connected}">
+					<li class="nav-item"><a class="nav-link"
+						href="/webappmaven/disconnect">Déconnection</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</nav>
@@ -38,8 +49,8 @@
 		<div class="row">
 			<c:forEach var="latestPosts" items="${latestPosts}">
 				<div class="col-lg-8 mt-4">
-					<a href="/webappmaven/deletePost?post=${latestPosts[0]}" class="ml-2"><i
-						class="fas fa-trash-alt"></i></a> <a
+					<a href="/webappmaven/deletePost?post=${latestPosts[0]}"
+						class="ml-2"><i class="fas fa-trash-alt"></i></a> <a
 						href="/webappmaven/modifyPost?post=${latestPosts[0]}" class="ml-2"><i
 						class="fas fa-pencil-alt"></i></a>
 					<!-- Title -->

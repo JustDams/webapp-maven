@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class DAOPost {
 	public void addPost(Post post) {
 		try {
 			String query = "INSERT INTO post(id,author,title,description,content,date) VALUES(null,?,?,?,?,?);";
-			PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, post.getAuthor());
 			ps.setString(2, post.getTitle());
 			ps.setString(3, post.getDescription());

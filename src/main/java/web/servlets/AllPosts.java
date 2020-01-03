@@ -11,24 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import web.project.dao.DAOFactory;
 import web.project.dao.DAOPost;
 
-/**
- * Servlet implementation class allPosts
- */
 public class AllPosts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AllPosts() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		DAOFactory factory = new DAOFactory();
@@ -44,10 +29,6 @@ public class AllPosts extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/allPosts.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
