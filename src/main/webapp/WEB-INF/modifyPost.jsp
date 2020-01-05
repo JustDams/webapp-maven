@@ -9,7 +9,12 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<title>Modification de l'article n°${post[0]}</title>
+<c:if test="${not empty post}">
+	<title>Modification de l'article n°${post[0]}</title>
+</c:if>
+<c:if test="${empty post}">
+	<title>L'article selectionné n'est pas valide</title>
+</c:if>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark position-fixed"
@@ -55,8 +60,8 @@
 				</c:if>
 				<c:if test="${titlelen}">
 					<div class="alert alert-danger">
-						<strong>Erreur !</strong> Le titre ne peut pas dépasser
-						40 caractères.
+						<strong>Erreur !</strong> Le titre ne peut pas dépasser 40
+						caractères.
 					</div>
 				</c:if>
 				<c:if test="${authorlen}">

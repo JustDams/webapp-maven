@@ -20,8 +20,12 @@ public class DeletePost extends HttpServlet {
 		DAOPost daoPost = factory.getDaoPost();
 
 		if (request.getParameter("post") != null) {
-			daoPost.deletePost(Integer.parseInt(request.getParameter("post")));
-			request.setAttribute("success", true);
+			try {
+				daoPost.deletePost(Integer.parseInt(request.getParameter("post")));
+				request.setAttribute("success", true);
+			} catch (NumberFormatException e) {
+				request.setAttribute("success", false);
+			}
 		}
 
 		List<String[]> allPosts = daoPost.getAllPosts();

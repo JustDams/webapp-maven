@@ -47,7 +47,7 @@ public class DAOPost {
 		List<String[]> a = new ArrayList<String[]>();
 
 		try {
-			String query = "SELECT * FROM POST ORDER BY date DESC;";
+			String query = "SELECT * FROM POST ORDER BY id DESC;";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 
 			ResultSet rs = preparedStatement.executeQuery();

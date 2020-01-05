@@ -21,12 +21,15 @@ public class Post extends HttpServlet {
 		String[] post = null;
 
 		if (request.getParameter("id") != null) {
-			int id = Integer.parseInt(request.getParameter("id"));
-			post = daoPost.getPost(id);
+			try {
+				int id = Integer.parseInt(request.getParameter("id"));
+				post = daoPost.getPost(id);
+			} catch(NumberFormatException e) {
+				post = null;
+			}
 		}
 
 		String user = request.getParameter("user");
-
 		Object co = request.getSession().getAttribute("connected");
 
 		request.setAttribute("connected", co);

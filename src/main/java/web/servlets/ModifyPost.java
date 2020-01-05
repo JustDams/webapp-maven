@@ -24,8 +24,12 @@ public class ModifyPost extends HttpServlet {
 		String[] post = null;
 
 		if (request.getParameter("post") != null) {
-			int postId = Integer.parseInt(request.getParameter("post"));
-			post = daoPost.getPost(postId);
+			try {
+				int postId = Integer.parseInt(request.getParameter("post"));
+				post = daoPost.getPost(postId);
+			} catch (NumberFormatException e) {
+				post = null;
+			}
 		}
 
 		request.setAttribute("post", post);

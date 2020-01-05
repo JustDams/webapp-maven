@@ -9,13 +9,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<c:if test="${not empty param.id}">
-	<title>Article n°${param.id} - "${post[2]}"</title>
+<c:if test="${not empty post}">
+	<title>Article n°${post[0]} - "${post[2]}"</title>
 </c:if>
-<c:if test="${not empty param.user}">
+<c:if test="${not empty allPosts}">
 	<title>Articles de ${param.user}</title>
 </c:if>
-<c:if test="${empty param.id and empty param.user}">
+<c:if test="${empty post and empty allPosts}">
 	<title>L'article ou l'utilisateur sélectionné n'est pas valide.</title>
 </c:if>
 </head>
